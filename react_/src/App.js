@@ -6,6 +6,7 @@ import {dndInitialState, dndReducer} from './utils'
 
 const App = ()=> {
   const [data, dispatch] = useReducer(dndReducer, dndInitialState);
+  console.log("➡️: App -> data", data)
  
   
   return (
@@ -15,6 +16,9 @@ const App = ()=> {
         data={data}
         dispatch={dispatch}
       />
+      <ol className="dropped-files">
+        {data.fileList.map(file => (<li key={file.name}>{file.name}</li>))}
+      </ol>
     </div>
   );
 }
